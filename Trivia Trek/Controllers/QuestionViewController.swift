@@ -149,7 +149,6 @@ class QuestionViewController: UIViewController {
     /// Returns the user to the board screen once the 'done' button is tapped
     @IBAction func doneButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "backToBoard", sender: self)
-        
     }
     
      // MARK: - Navigation
@@ -161,13 +160,11 @@ class QuestionViewController: UIViewController {
             let boardVC = segue.destination as? BoardViewController
             
             boardVC!.game!.game[self.game!.questions[self.questionIndex].id] = self.choice
-            
             boardVC!.game!.questions.remove(at: self.questionIndex)
-//            self.game!.questions.remove(at: self.questionIndex)
-            
             boardVC!.nextMove()
             
         }
+        
      }
     
     
