@@ -150,7 +150,7 @@ class BoardViewController: UIViewController {
             
             let db = Firestore.firestore()
             let data: [String: Any] = ["user" : Auth.auth().currentUser!.uid,
-                        "history" : self.game!.game,
+                        "score" : self.game!.turnsTaken,
                         "date" : Timestamp(date: Date())]
             db.collection("games").document().setData(data)
             

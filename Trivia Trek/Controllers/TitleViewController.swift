@@ -16,9 +16,10 @@ import FirebaseAuth
 
 class TitleViewController: UIViewController {
 
-    /// 3  main buttons on the screen
+    /// 4  main buttons on the screen
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var progressButton: UIButton!
     @IBOutlet weak var reportBug: UIButton!
     
     /// Profile area
@@ -44,13 +45,14 @@ class TitleViewController: UIViewController {
         
         self.playButton.layer.cornerRadius = 15
         self.helpButton.layer.cornerRadius = 15
+        self.progressButton.layer.cornerRadius = 15
         self.reportBug.layer.cornerRadius = 15
         self.loginButton.layer.cornerRadius = 15
         self.loginButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         self.avatarPicker.alpha = 0
         
-        let fbLoginButton = FBSDKLoginButton(frame: CGRect(x: view.center.x - 45, y: view.center.y * 1.6, width: 90, height: 30))
+        let fbLoginButton = FBSDKLoginButton(frame: CGRect(x: view.center.x - 60, y: view.center.y * 1.65, width: 120, height: 35))
     
         if UserDefaults.standard.hasObject(forKey: "bestScore") {
             

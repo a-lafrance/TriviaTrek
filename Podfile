@@ -14,6 +14,7 @@ target 'Trivia Trek' do
   pod 'SnapSDK'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
   
   target 'MAD 2018-19Tests' do
     inherit! :search_paths

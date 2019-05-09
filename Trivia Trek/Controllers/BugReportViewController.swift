@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import CloudKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class BugReportViewController: UIViewController, UITextViewDelegate {
     
@@ -40,15 +41,31 @@ class BugReportViewController: UIViewController, UITextViewDelegate {
     @IBAction func submitButton(_ sender: Any) {
         
         // do the query
-        let bugReport = CKRecord(recordType: "Bug")
-        bugReport.setObject(self.textField!.text as NSString, forKey: "description")
+        let db = Firestore.firestore()
         
-        let database = CKContainer.default().publicCloudDatabase
+        let data: [String : Any] = ["user" : Auth.auth().currentUser?.uid,
+                                    "description" : self.textField.text]
         
-        database.save(bugReport, completionHandler: { record, error in
-            DispatchQueue.main.sync {
-                self.performSegue(withIdentifier: "rewindToHome", sender: self)
+        db.collection("bugs").addDocument(data: data, completion: { error in
+            var message = ""
+            var description = ""
+            
+            if error != nil {
+                message = "Error"
+                description = error!.localizedDescription
             }
+            else {
+                message = "Success"
+                description = "Feedback reported successfully"
+            }
+            
+            let alertScreen = UIAlertController(title: message, message: description, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Done", style: .default, handler: { action in
+                self.rewindToHome(self)
+            })
+            alertScreen.addAction(action)
+            
+            self.present(alertScreen, animated: true, completion: {})
         })
         
     }
