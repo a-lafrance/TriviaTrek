@@ -113,5 +113,8 @@ class FinalPageViewController: UIViewController {
         }
     }
     
+    @IBAction func returnHome(_ sender: Any) {
+        self.performSegue(withIdentifier: "rewindToHome", sender: sender)
+    }
     
 }

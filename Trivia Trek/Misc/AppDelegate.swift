@@ -13,6 +13,12 @@ import Firebase
 
 @UIApplicationMain
 
+/* Todo:
+ - Checks for login (every button on main screen)
+ - Load preferences from db to UserDefaults
+ - Take screenshots for usage and backend (Firebase console)
+ */
+
 // Main application delegate class which controls all subprocesses
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

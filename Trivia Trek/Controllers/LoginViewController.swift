@@ -18,8 +18,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var signupView: UIView!
     
-    var loginForm: LoginFormViewController!
-    var signupForm: SignupFormViewController!
+    var loginForm: LoginFormViewController?
+    var signupForm: SignupFormViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,13 @@ class LoginViewController: UIViewController {
         switch self.loginPicker.selectedSegmentIndex {
             
             case 0:
-                self.loginForm.view.isHidden = false
-                self.signupForm.view.isHidden = true
+                self.loginForm?.view.isHidden = false
+                self.signupForm?.view.isHidden = true
                 self.view.bringSubviewToFront(self.loginView)
             
             case 1:
-                self.loginForm.view.isHidden = true
-                self.signupForm.view.isHidden = false
+                self.loginForm?.view.isHidden = true
+                self.signupForm?.view.isHidden = false
                 self.view.bringSubviewToFront(self.signupView)
             
             default:
@@ -47,8 +47,8 @@ class LoginViewController: UIViewController {
     
     func login() {
         
-        let email = self.loginForm.emailField.text!
-        let password = self.loginForm.passwordField.text!
+        let email = self.loginForm!.emailField.text!
+        let password = self.loginForm!.passwordField.text!
         
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
             
@@ -56,8 +56,8 @@ class LoginViewController: UIViewController {
                 let errorAlert = UIAlertController(title: "Error", message: "Account does not exist", preferredStyle: UIAlertController.Style.alert)
                 
                 let done = UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: { action in
-                    self.loginForm.emailField.text = ""
-                    self.loginForm.passwordField.text = ""
+                    self.loginForm!.emailField.text = ""
+                    self.loginForm!.passwordField.text = ""
                 })
                 errorAlert.addAction(done)
                 
@@ -72,9 +72,9 @@ class LoginViewController: UIViewController {
     
     func signUp() {
         
-        let username = self.signupForm.usernameField.text!
-        let email = self.signupForm.emailField.text!
-        let password = self.signupForm.passwordField.text!
+        let username = self.signupForm!.usernameField.text!
+        let email = self.signupForm!.emailField.text!
+        let password = self.signupForm!.passwordField.text!
         
         Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
             
@@ -85,9 +85,9 @@ class LoginViewController: UIViewController {
                 errorAlert.addAction(done)
                 
                 self.present(errorAlert, animated: true, completion: {
-                    self.signupForm.usernameField.text = ""
-                    self.signupForm.emailField.text = ""
-                    self.signupForm.passwordField.text = ""
+                    self.signupForm!.usernameField.text = ""
+                    self.signupForm!.emailField.text = ""
+                    self.signupForm!.passwordField.text = ""
                 })
             }
             
@@ -107,9 +107,9 @@ class LoginViewController: UIViewController {
                     
                     alertScreen.addAction(done)
                     self.present(alertScreen, animated: true, completion: {
-                        self.signupForm.usernameField.text = ""
-                        self.signupForm.emailField.text = ""
-                        self.signupForm.passwordField.text = ""
+                        self.signupForm!.usernameField.text = ""
+                        self.signupForm!.emailField.text = ""
+                        self.signupForm!.passwordField.text = ""
                     })
                 })
                 
@@ -124,13 +124,13 @@ class LoginViewController: UIViewController {
         switch self.loginPicker.selectedSegmentIndex {
             
             case 0:
-                self.loginForm.view.isHidden = false
-                self.signupForm.view.isHidden = true
+                self.loginForm!.view.isHidden = false
+                self.signupForm!.view.isHidden = true
                 self.view.bringSubviewToFront(self.loginView)
             
             case 1:
-                self.loginForm.view.isHidden = true
-                self.signupForm.view.isHidden = false
+                self.loginForm!.view.isHidden = true
+                self.signupForm!.view.isHidden = false
                 self.view.bringSubviewToFront(self.signupView)
             
             default:

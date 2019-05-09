@@ -238,11 +238,16 @@
                                     <segue destination="mrm-b0-Q3A" kind="embed" id="Eeg-IT-mC0"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="9Ig-rj-0Rc">
-                                <rect key="frame" x="21" y="83" width="333" height="85"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mL4-tQ-yG9">
+                                <rect key="frame" x="16" y="276" width="343" height="267"/>
+                                <connections>
+                                    <segue destination="qhS-ER-P2p" kind="embed" id="BIz-PC-Va2"/>
+                                </connections>
+                            </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TriviaTrekShoe" translatesAutoresizingMaskIntoConstraints="NO" id="8u5-dd-QsC">
+                                <rect key="frame" x="130" y="85" width="124" height="94"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="9Ig-rj-0Rc" secondAttribute="height" multiplier="333:85" id="5Ek-0r-Ycs"/>
-                                    <constraint firstAttribute="width" constant="333" id="ZVW-y9-Bap"/>
+                                    <constraint firstAttribute="width" secondItem="8u5-dd-QsC" secondAttribute="height" multiplier="62:47" id="11E-Gp-7pv"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -250,15 +255,20 @@
                         <constraints>
                             <constraint firstItem="HGq-CE-5Fg" firstAttribute="trailing" secondItem="P46-39-OtX" secondAttribute="trailing" constant="16" id="1mN-t3-hZN"/>
                             <constraint firstItem="HGq-CE-5Fg" firstAttribute="bottom" secondItem="qxW-ka-GU0" secondAttribute="bottom" constant="44" id="3Cv-01-lvb"/>
+                            <constraint firstItem="U1G-vF-aNL" firstAttribute="top" secondItem="8u5-dd-QsC" secondAttribute="bottom" constant="28" id="4OB-g3-Ii7"/>
+                            <constraint firstItem="8u5-dd-QsC" firstAttribute="top" secondItem="HGq-CE-5Fg" secondAttribute="top" constant="21" id="85o-Y4-ma7"/>
+                            <constraint firstItem="mL4-tQ-yG9" firstAttribute="width" secondItem="P46-39-OtX" secondAttribute="width" id="BiI-bB-utQ"/>
                             <constraint firstItem="U1G-vF-aNL" firstAttribute="centerX" secondItem="HGq-CE-5Fg" secondAttribute="centerX" id="GNL-zR-ev3"/>
-                            <constraint firstItem="9Ig-rj-0Rc" firstAttribute="centerX" secondItem="HGq-CE-5Fg" secondAttribute="centerX" id="IDt-lj-gEu"/>
-                            <constraint firstItem="9Ig-rj-0Rc" firstAttribute="top" secondItem="HGq-CE-5Fg" secondAttribute="top" constant="19" id="Res-5z-qRE"/>
+                            <constraint firstItem="mL4-tQ-yG9" firstAttribute="centerX" secondItem="P46-39-OtX" secondAttribute="centerX" id="J0J-oE-N1I"/>
+                            <constraint firstItem="U1G-vF-aNL" firstAttribute="top" secondItem="HGq-CE-5Fg" secondAttribute="top" constant="143" id="KNy-5M-RVd"/>
+                            <constraint firstItem="8u5-dd-QsC" firstAttribute="leading" secondItem="HGq-CE-5Fg" secondAttribute="leading" constant="130" id="Paw-tn-WfP"/>
+                            <constraint firstItem="mL4-tQ-yG9" firstAttribute="centerY" secondItem="P46-39-OtX" secondAttribute="centerY" id="Snn-T6-FRK"/>
                             <constraint firstItem="qxW-ka-GU0" firstAttribute="top" secondItem="P46-39-OtX" secondAttribute="bottom" constant="40" id="aqa-0R-9pN"/>
                             <constraint firstItem="P46-39-OtX" firstAttribute="centerX" secondItem="HGq-CE-5Fg" secondAttribute="centerX" id="dlA-5F-IU2"/>
-                            <constraint firstItem="U1G-vF-aNL" firstAttribute="top" secondItem="9Ig-rj-0Rc" secondAttribute="bottom" constant="39" id="gUF-va-CJJ"/>
                             <constraint firstItem="qxW-ka-GU0" firstAttribute="centerX" secondItem="HGq-CE-5Fg" secondAttribute="centerX" id="kyX-8e-ilw"/>
                             <constraint firstItem="P46-39-OtX" firstAttribute="leading" secondItem="HGq-CE-5Fg" secondAttribute="leading" constant="16" id="la6-5x-6Zg"/>
                             <constraint firstItem="P46-39-OtX" firstAttribute="top" secondItem="U1G-vF-aNL" secondAttribute="bottom" constant="41" id="xUg-VH-DdN"/>
+                            <constraint firstItem="mL4-tQ-yG9" firstAttribute="height" secondItem="P46-39-OtX" secondAttribute="height" id="zli-EH-XzX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HGq-CE-5Fg"/>
                     </view>
@@ -274,6 +284,7 @@
                         <outlet property="emailField" destination="CEi-pc-Rqt" id="t5q-kf-q9R"/>
                         <outlet property="loginButton" destination="qxW-ka-GU0" id="7Xo-NY-3hg"/>
                         <outlet property="loginPicker" destination="U1G-vF-aNL" id="2sz-hM-2dj"/>
+                        <outlet property="loginView" destination="mL4-tQ-yG9" id="aQi-6k-fUD"/>
                         <outlet property="signupView" destination="P46-39-OtX" id="2DL-wZ-E9h"/>
                         <segue destination="5O2-Et-VLg" kind="unwind" identifier="rewindToHome" unwindAction="rewindToHomeWithSegue:" id="Tpl-LM-cW9"/>
                     </connections>
@@ -357,7 +368,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Jvi-fk-BFw" kind="popoverPresentation" popoverAnchorView="8fZ-0C-bvq" id="rgq-Vl-7LS">
+                                    <segue destination="Jvi-fk-BFw" kind="popoverPresentation" identifier="reportBug" popoverAnchorView="8fZ-0C-bvq" id="rgq-Vl-7LS">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -370,7 +381,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ham-KS-h2D" kind="showDetail" id="tR9-e2-d8n"/>
+                                    <segue destination="Ham-KS-h2D" kind="showDetail" identifier="startGame" id="tR9-e2-d8n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gld-5s-cVD">
@@ -382,7 +393,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="mRN-5y-L9I" kind="show" id="uan-Bv-G7v"/>
+                                    <segue destination="mRN-5y-L9I" kind="show" identifier="showHistory" id="uan-Bv-G7v"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whitearrow" translatesAutoresizingMaskIntoConstraints="NO" id="wwb-xd-sCl">
@@ -1286,9 +1297,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="miT-Rc-EUv" kind="popoverPresentation" popoverAnchorView="Zly-TO-huL" id="5CF-wT-xFp">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="returnHome:" destination="OvD-cP-VMb" eventType="touchUpInside" id="HRq-xg-mBm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Win!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-vS-H8L">
@@ -1343,7 +1352,7 @@
                         <outlet property="feedBackButton" destination="Kt8-st-gtY" id="vbb-6V-x1k"/>
                         <outlet property="homeButton" destination="Zly-TO-huL" id="zeO-ft-hWz"/>
                         <outlet property="message" destination="ICU-rq-rel" id="VUP-Kz-rWk"/>
-                        <segue destination="Qge-d7-vlW" kind="unwind" unwindAction="rewindToHomeWithSegue:" id="Je7-Bx-fOc"/>
+                        <segue destination="Qge-d7-vlW" kind="unwind" identifier="rewindToHome" unwindAction="rewindToHomeWithSegue:" id="Je7-Bx-fOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjD-Jn-Vi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1396,7 +1405,7 @@
             <objects>
                 <viewController id="qhS-ER-P2p" customClass="LoginFormViewController" customModule="Trivia_Trek" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cdg-tW-DTn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="267"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEi-pc-Rqt">
@@ -1501,7 +1510,7 @@
                         <color key="backgroundColor" red="0.41176470590000003" green="0.64705882349999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.41176470590000003" green="0.64705882349999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" id="yGX-qo-Sj5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="gameCell" id="yGX-qo-Sj5">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yGX-qo-Sj5" id="hoi-aE-Twf">
@@ -1516,9 +1525,18 @@
                             <outlet property="delegate" destination="8BP-KB-Jab" id="PoD-Dq-Yvd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="History" id="Kxf-fK-sFD"/>
+                    <navigationItem key="navigationItem" title="History" id="Kxf-fK-sFD">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="D19-Yl-oL1">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="rewindToHome:" destination="8BP-KB-Jab" id="tgn-zV-XMZ"/>
+                                <segue destination="Sm6-rt-Pqd" kind="unwind" identifier="rewindToHome" unwindAction="rewindToHomeWithSegue:" id="wmb-J9-LT0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ib2-AB-Kyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Sm6-rt-Pqd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-529" y="1239"/>
         </scene>
@@ -1529,7 +1547,6 @@
         <image name="betterstopwatch" width="409.60000610351562" height="409.60000610351562"/>
         <image name="cpupicfemale" width="152.16000366210938" height="152.16000366210938"/>
         <image name="cpupicmale" width="152.16000366210938" height="152.16000366210938"/>
-        <image name="firebaselogo" width="938" height="264"/>
         <image name="gifticon" width="256" height="256"/>
         <image name="instructions" width="349" height="796"/>
         <image name="left-arrow" width="225" height="225"/>
@@ -1539,7 +1556,6 @@
         <image name="whitearrow" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xOY-wv-heq"/>
         <segue reference="rgq-Vl-7LS"/>
     </inferredMetricsTieBreakers>
 </document>

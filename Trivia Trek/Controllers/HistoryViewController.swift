@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class HistoryViewController: UITableViewController {
 
-    var games: [Int] = []
+    var games: [Date : Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +27,19 @@ class HistoryViewController: UITableViewController {
             else {
                 for doc in result!.documents {
                     let score = doc.get("score") as! Int
+                    let date = (doc.get("date") as! Timestamp).dateValue()
                     
-                    self.games.append(score)
+                    self.games[date] = score
                 }
+                self.tableView.reloadData()
+
             }
         })
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,11 +58,23 @@ class HistoryViewController: UITableViewController {
         // Configure the cell...
         let index = indexPath.row
         
-        cell.textLabel?.text = "You finished in \(self.games[index]) turns!"
+        let date = Array(self.games.keys)[index]
+        let score = self.games[date]!
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        cell.textLabel?.text = "You finished in \(score) turns on \(formatter.string(from: date))"
+        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         return cell
     }
 
+    @IBAction func rewindToHome(_ sender: Any) {
+        self.performSegue(withIdentifier: "rewindToHome", sender: sender)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

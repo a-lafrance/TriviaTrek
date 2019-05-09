@@ -101,6 +101,23 @@ class TitleViewController: UIViewController {
         
     }
 
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "startGame" || identifier == "showHistory" || identifier == "reportBug" {
+            if Auth.auth().currentUser == nil {
+                // cancel segue
+                let alertScreen = UIAlertController(title: "Not logged in", message: "You must log in to continue", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Back", style: .default, handler: { action in})
+                alertScreen.addAction(action)
+                
+                self.present(alertScreen, animated: true, completion: {})
+                
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     /// Configures avatar picker view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -112,7 +129,10 @@ class TitleViewController: UIViewController {
             self.avatarPickerController!.delegate = self
             
         }
-        
+        else if segue.destination is LoginViewController {
+            
+        }
+
     }
     
     @IBAction func doLogin(_ sender: Any) {
