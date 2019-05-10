@@ -49,23 +49,30 @@ class HistoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.games.count
+        return self.games.count > 0 ? self.games.count : 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
 
         // Configure the cell...
-        let index = indexPath.row
         
-        let date = Array(self.games.keys)[index]
-        let score = self.games[date]!
+        if self.games.count > 0 {
+            let index = indexPath.row
+            
+            let date = Array(self.games.keys)[index]
+            let score = self.games[date]!
+            
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            
+            cell.textLabel?.text = "You finished in \(score) turns on \(formatter.string(from: date))"
+        }
+        else {
+            cell.textLabel?.text = "No games played yet"
+        }
         
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        
-        cell.textLabel?.text = "You finished in \(score) turns on \(formatter.string(from: date))"
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         

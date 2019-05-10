@@ -39,7 +39,7 @@ class TitleViewController: UIViewController {
     
     let goldColor = UIColor(red: 1, green: 0.8, blue: 0.196, alpha: 0.8).cgColor
     
-    /// Configures settings when the apap first starts up
+    /// Configures settings when the app first starts up
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,16 +87,14 @@ class TitleViewController: UIViewController {
             self.highScoreLabel.text = "Best Score: N/A"
             
         }
-
-        let currentUser = Auth.auth().currentUser
         
-        if currentUser == nil {
+        if Auth.auth().currentUser == nil {
             self.usernameLabel.text = "Guest"
-            self.loginButton.titleLabel!.text = "Log in"
+            self.loginButton.setTitle("Log in", for: .normal)
         }
         else {
             self.usernameLabel.text = Auth.auth().currentUser?.displayName
-            self.loginButton.titleLabel!.text = "Log out"
+            self.loginButton.setTitle("Log out", for: .normal)
         }
         
     }
@@ -143,6 +141,7 @@ class TitleViewController: UIViewController {
             do {
                 try Auth.auth().signOut()
                 self.usernameLabel.text = "Guest"
+                self.loginButton.setTitle("Log in", for: .normal)
             }
             catch {
                 
@@ -157,7 +156,7 @@ class TitleViewController: UIViewController {
     
     /// Facebook login completion
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User Logged In")
+        
         if ((error) != nil) {}
         else if result.isCancelled {}
         else { if result.grantedPermissions.contains("public_profile") {} }
