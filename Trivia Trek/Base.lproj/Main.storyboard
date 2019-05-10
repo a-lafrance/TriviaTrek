@@ -303,7 +303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="MADImage1" translatesAutoresizingMaskIntoConstraints="NO" id="SCu-VB-nJN">
-                                <rect key="frame" x="-578" y="0.0" width="1144" height="667"/>
+                                <rect key="frame" x="-938" y="0.0" width="1595" height="930"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dN8-gm-0PQ">
@@ -415,6 +415,9 @@
                                 <state key="normal" title="Website">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="websiteButtonPressedWith_sender:" destination="miT-Rc-EUv" eventType="touchUpInside" id="rzz-AB-vy0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.41167658567428589" green="0.64030134677886963" blue="0.98686724901199341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -473,12 +476,13 @@
                         <outlet property="progressButton" destination="gld-5s-cVD" id="bjS-cb-Pxg"/>
                         <outlet property="reportBug" destination="8fZ-0C-bvq" id="Eho-eQ-zXy"/>
                         <outlet property="usernameLabel" destination="dN8-gm-0PQ" id="3Zn-wm-0hX"/>
+                        <outlet property="webButton" destination="d50-wf-yzL" id="ddN-ra-wwH"/>
                         <segue destination="o1F-3t-zMs" kind="show" identifier="showLogin" id="yuP-JS-1ib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJH-Py-6xw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-642.39999999999998" y="130.88455772113943"/>
+            <point key="canvasLocation" x="-643.47826086956525" y="130.58035714285714"/>
         </scene>
         <!--Game Setup-->
         <scene sceneID="odU-ri-FSK">

@@ -14,13 +14,15 @@ import FBSDKLoginKit
 import SCSDKBitmojiKit
 import FirebaseAuth
 
+
 class TitleViewController: UIViewController {
 
-    /// 4  main buttons on the screen
+    /// 5  main buttons on the screen
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var progressButton: UIButton!
     @IBOutlet weak var reportBug: UIButton!
+    @IBOutlet weak var webButton: UIButton!
     
     /// Profile area
     @IBOutlet weak var highScoreLabel: UILabel!
@@ -43,6 +45,8 @@ class TitleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.webButton.layer.cornerRadius = 15
         self.playButton.layer.cornerRadius = 15
         self.helpButton.layer.cornerRadius = 15
         self.progressButton.layer.cornerRadius = 15
@@ -50,21 +54,11 @@ class TitleViewController: UIViewController {
         self.loginButton.layer.cornerRadius = 15
         self.loginButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
+        self.usernameLabel.adjustsFontSizeToFitWidth = true
+        
         self.avatarPicker.alpha = 0
         
-        let fbLoginButton = FBSDKLoginButton(frame: CGRect(x: view.center.x - 60, y: view.center.y * 1.65, width: 120, height: 35))
-    
-        if UserDefaults.standard.hasObject(forKey: "bestScore") {
-            
-            let score = UserDefaults.standard.object(forKey: "bestScore") as! Int
-            self.highScoreLabel.text = "Best Score: \(score == -1 ? "N/A" : "\(score)")"
-            
-        }
-        else {
-            
-            self.highScoreLabel.text = "Best Score: N/A"
-
-        }
+        let fbLoginButton = FBSDKLoginButton(frame: CGRect(x: view.center.x - 60, y: view.center.y * 1.58, width: 120, height: 35))
         
         view.addSubview(fbLoginButton)
         
@@ -91,10 +85,23 @@ class TitleViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             self.usernameLabel.text = "Guest"
             self.loginButton.setTitle("Log in", for: .normal)
+            self.highScoreLabel.text = "Best Score: N/A"
         }
         else {
             self.usernameLabel.text = Auth.auth().currentUser?.displayName
             self.loginButton.setTitle("Log out", for: .normal)
+            
+            if UserDefaults.standard.hasObject(forKey: "bestScore") {
+                
+                let score = UserDefaults.standard.object(forKey: "bestScore") as! Int
+                self.highScoreLabel.text = "Best Score: \(score == -1 ? "N/A" : "\(score)")"
+                
+            }
+            else {
+                
+                self.highScoreLabel.text = "Best Score: N/A"
+                
+            }
         }
         
     }
@@ -142,6 +149,7 @@ class TitleViewController: UIViewController {
                 try Auth.auth().signOut()
                 self.usernameLabel.text = "Guest"
                 self.loginButton.setTitle("Log in", for: .normal)
+                self.highScoreLabel.text = "Best Score: N/A"
             }
             catch {
                 
@@ -192,6 +200,10 @@ class TitleViewController: UIViewController {
     @IBAction func rewindToHome(segue: UIStoryboardSegue) {
         
         
+    }
+    
+    @IBAction func websiteButtonPressed (_sender: UIButton) {
+        UIApplication.shared.openURL(NSURL(string: "https://samrudhshenoy.github.io/triviatrek")! as URL)
     }
 
 }

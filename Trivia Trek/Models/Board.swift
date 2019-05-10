@@ -43,7 +43,7 @@ class Board: SKScene {
         self.maxTurns = maxTurns
         self.player = player
         self.turnsTaken = 0
-        self.map = Map.defaultMap(type: .normal)
+        self.map = Map.defaultMap(type: mapType)
         self.streak = 0
         
         super.init()
@@ -103,6 +103,10 @@ class Board: SKScene {
             self.addChild(self.player.sprite)
         }
     
+    }
+    
+    func initMap(type: Map.MapType) {
+        self.map = Map.defaultMap(type: type)
     }
     
     /// Add the map image to the scene

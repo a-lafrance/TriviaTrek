@@ -60,6 +60,7 @@ class SetupViewController: UIViewController {
             }
             else {
                 board?.game!.background = SKSpriteNode(imageNamed: "background-winter")
+                board?.game!.initMap(type: .winter)
             }
             
         }

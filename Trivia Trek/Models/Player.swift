@@ -23,7 +23,7 @@ class Player {
         self.pos = 0
         
         self.sprite = SKSpriteNode(texture: SKTexture(image: UIImage(named: "cpupicmale")!))
-        self.sprite.size = CGSize(width: 30, height: 30)
+        self.sprite.size = CGSize(width: 30, height: 31)
         self.updateImg()
     }
     
