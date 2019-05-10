@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginFormViewController: UIViewController {
+class LoginFormViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -19,4 +19,13 @@ class LoginFormViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(string == "\n") {
+            textField.endEditing(true)
+            return false
+        }
+        else {
+            return true
+        }
+    }
 }

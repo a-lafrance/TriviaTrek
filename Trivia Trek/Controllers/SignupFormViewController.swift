@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupFormViewController: UIViewController {
+class SignupFormViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -18,6 +18,16 @@ class SignupFormViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(string == "\n") {
+            textField.endEditing(true)
+            return false
+        }
+        else {
+            return true
+        }
     }
     
 }
